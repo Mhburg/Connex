@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS connex_db;
+CREATE DATABASE connex_db;
