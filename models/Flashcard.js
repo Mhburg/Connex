@@ -21,7 +21,6 @@ Flashcard.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-
     flashcard_id: {
       type: DataTypes.INTEGER,
       references: {
