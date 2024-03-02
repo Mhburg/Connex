@@ -17,6 +17,7 @@
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
     "mysql2": "^3.9.2",
+    "openai": "^4.28.4",
     "sequelize": "^6.37.1",
     "speech-to-text": "^2.9.1"
   },
@@ -25,5 +26,6 @@
     "eslint-config-prettier": "^9.1.0",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5"
-  }
+  },
+  "type": "module"
 }
