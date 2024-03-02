@@ -87,7 +87,7 @@ router.get('/openai', async (req, res) => {
 
   // Extract the text from the completion object and prepend the prefix
   const htmlContent =
-    'This is the response:' + completion.data.choices[0].text.trim();
+    'This is the response:' + completion.choices[0].message.content;
   res.json(htmlContent);
 
   // Set the Content-Type header to 'text/html'
