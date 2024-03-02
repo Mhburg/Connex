@@ -85,7 +85,7 @@ router.get('/openai', async (req, res) => {
     messages: [{ role: "system", content: "You are a helpful assistant." }],
     model: "gpt-3.5-turbo",
   });
-  res.json(`The prompt you send is: ${prompt}.\nThe response is: ${completion}`);
+  res.json(`The prompt you send is: ${prompt}.\nThe response is: ${completion.choices[0]}`);
 });
 
 router.get('/login', (req, res) => {
