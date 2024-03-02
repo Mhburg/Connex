@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Yukitoshi's Story'",
+    "description": "I am learning full stack development. How cool!"
+  },
+  {
+    "name": "Yukitoshi's Programming Language List",
+    "description": "Yukitoshi can do python, rstudio, tableau, alteryx, html, css, javascript, node, apis, mysql, object relational mapping, and model-views-controller!"
+  },
+  {
+    "name": "Yukitoshi's degree",
+    "description": "Yukitoshi is doing a postgraduate degree in data science"
+  }
+]
