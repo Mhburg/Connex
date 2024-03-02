@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 const OpenAI = require('openai');
 const openai = new OpenAI();
 
-
 router.get('/', async (req, res) => {
   try {
     // Get all flashcard and JOIN with user data
@@ -82,10 +81,19 @@ router.get('/openai', async (req, res) => {
   const query = req.query;
   const prompt = query.prompt;
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a helpful assistant." }],
-    model: "gpt-3.5-turbo",
+    messages: [{ role: 'system', content: 'You are a helpful assistant.' }],
+    model: 'gpt-3.5-turbo',
   });
-  res.json(`The prompt you send is: ${prompt}.\nThe response is: ${completion.choices[0]}`);
+
+  // Extract the text from the completion object and prepend the prefix
+  const htmlContent =
+    'This is the response:' + completion.data.choices[0].text.trim();
+
+  // Set the Content-Type header to 'text/html'
+  res.setHeader('Content-Type', 'text/html');
+
+  // Return the HTML content as the response
+  res.send(htmlContent);
 });
 
 router.get('/login', (req, res) => {
