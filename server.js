@@ -8,7 +8,7 @@ const sequelize = require('./config/connection');
 // Create an Express application instance
 const app = express();
 // Set the port for the server
-const PORT = process.env.PORT || 3001; // Use PORT from environment variable or default to 3001
+const PORT = process.env.PORT || 80; // Use PORT from environment variable or default to 3001
 
 // TODO: add stuff here
 
