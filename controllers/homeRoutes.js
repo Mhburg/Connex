@@ -72,7 +72,7 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/welcome', (req, res) => {
-  return 'Hello World';
+  res.json('Hello World');
 });
 
 router.get('/login', (req, res) => {
