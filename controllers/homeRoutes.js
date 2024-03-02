@@ -75,6 +75,12 @@ router.get('/welcome', (req, res) => {
   res.json('Hello World');
 });
 
+router.get('/openai', async (req, res) => {
+  const query = req.query;
+  const prompt = query.prompt;
+  res.json(`The prompt you send is: ${prompt}`);
+});
+
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
