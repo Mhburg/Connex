@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Flashcard, User } = require('../models');
 const withAuth = require('../utils/auth');
+const OpenAI = require('openai');
+const openai = new OpenAI();
+
 
 router.get('/', async (req, res) => {
   try {
@@ -78,7 +81,11 @@ router.get('/welcome', (req, res) => {
 router.get('/openai', async (req, res) => {
   const query = req.query;
   const prompt = query.prompt;
-  res.json(`The prompt you send is: ${prompt}`);
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: "You are a helpful assistant." }],
+    model: "gpt-3.5-turbo",
+  });
+  res.json(`The prompt you send is: ${prompt}.\nThe response is: ${completion}`);
 });
 
 router.get('/login', (req, res) => {
