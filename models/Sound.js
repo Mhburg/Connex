@@ -12,11 +12,11 @@ Sound.init(
       autoIncrement: true,
     },
     session_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
       allowNull: false,
     },
     record: {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
     },
   },
   {
