@@ -88,6 +88,8 @@ router.get('/openai', async (req, res) => {
   // Extract the text from the completion object and prepend the prefix
   const htmlContent =
     'This is the response:' + completion.choices[0].message.content;
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
   res.json(htmlContent);
 
   // Set the Content-Type header to 'text/html'
