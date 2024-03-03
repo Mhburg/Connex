@@ -13,8 +13,8 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'connex-db.chckuymyq2sc.ap-southeast-2.rds.amazonaws.com',
       dialect: 'mysql',
-      port: 3306
-    }
+      port: 3306,
+    },
   );
 }
 

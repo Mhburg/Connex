@@ -3,7 +3,7 @@ const { Flashcard, User } = require('../models');
 const withAuth = require('../utils/auth');
 const OpenAI = require('openai');
 const openai = new OpenAI();
-const authLogin = require('./auth.js');
+const authLogin = require('../auth');
 
 router.get('/', async (req, res) => {
   try {
