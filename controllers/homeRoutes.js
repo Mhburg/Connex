@@ -3,6 +3,7 @@ const { Flashcard, User } = require('../models');
 const withAuth = require('../utils/auth');
 const OpenAI = require('openai');
 const openai = new OpenAI();
+const authLogin = require('./auth.js')
 
 router.get('/', async (req, res) => {
   try {
@@ -88,6 +89,12 @@ router.get('/openai', async (req, res) => {
   // Extract the text from the completion object and prepend the prefix
   const htmlContent =
     'This is the response:' + completion.choices[0].message.content;
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Request-With, Content-Type, Accept',
+  );
   res.json(htmlContent);
 
   // Set the Content-Type header to 'text/html'
@@ -96,6 +103,26 @@ router.get('/openai', async (req, res) => {
   // Return the HTML content as the response
   //res.send(htmlContent);
 });
+
+router.post('/openai', async (req, res) => {
+  const token = req.body.token;
+  if (!authLogin(token)) {
+    const msg = req.body.message
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: 'system', content: msg }],
+      model: 'gpt-3.5-turbo',
+    });
+    // Extract the text from the completion object and prepend the prefix
+    const htmlContent = completion.choices[0].message.content;
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Request-With, Content-Type, Accept',
+    );
+    res.json(htmlContent);
+  }
+})
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
